@@ -61,7 +61,7 @@ Game logic executes locally on devices; no personal data is transmitted without 
 Cross-platform adapter layers isolate identity, ensuring privacy while maintaining gameplay functionality.
 
 **8️⃣ Novelty & Market Position (Strategic Insight)**
-Unlike GPS-based games like Pokémon GO, this system enables anonymous, peer-to-peer 
+Unlike GPS-based games, this system enables anonymous, peer-to-peer 
 BLE-based tagging in real space. Existing AR/VR demos rarely combine rotating BLE tokens,
 real-time detection, and multi-platform graphics outputs. By bridging BLE tag gameplay to smart glasses, 
 VR, and metaverse platforms, it establishes a unique, privacy-respecting hybrid AR/VR experience.
