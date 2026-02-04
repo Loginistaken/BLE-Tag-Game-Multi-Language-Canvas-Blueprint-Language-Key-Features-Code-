@@ -1,4 +1,61 @@
 # BLE-Tag-Game-Multi-Language-Canvas-Blueprint-Language-Key-Features-Code-
+Core Interaction Flow
+
+Each player’s phone broadcasts a rotating ephemeral token via BLE.
+
+Phones scan for nearby tokens continuously.
+
+When a token is detected within a threshold range (~3–5m):
+
+The game triggers a tag event locally.
+
+Phones provide feedback (vibration, audio beep, or visual alert).
+
+Optional score submission to Rails backend:
+
+Only anonymous session ID used.
+
+No personal identifiers collected.
+
+Game respects legal guidelines:
+
+Only consenting players participate.
+
+Ephemeral tokens rotate frequently.
+
+Non-players are never tracked or notified.
+
+Session expires automatically when the game ends or tokens rotate out.
+
+Legal & Privacy Guidelines Maintained
+
+Ephemeral BLE tokens → no persistent identifiers
+
+Opt-in gameplay → consent is explicit
+
+Local processing → tags detected on-device, not transmitted
+
+Temporary scores → backend stores only anonymous session data
+
+Physical safety warning → players notified not to enter hazardous areas
+
+Why Multi-Language Approach is Recommended
+
+Swift & Kotlin/Java → native BLE scanning & broadcasting for iOS and Android.
+
+React Native / JavaScript → cross-platform UI, optional abstraction for game logic.
+
+Ruby on Rails → lightweight backend for anonymous session aggregation or leaderboards.
+
+Python → optional simulation, testing, analytics.
+
+C++ → optional performance-critical computation of proximity/risk events.
+
+
+
+
+
+
 | Language / Layer                 | Role / Key Features                             | Code / Snippet Example                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | -------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Swift (iOS)**                  | Core BLE scanning & broadcasting                | `swift\nimport CoreBluetooth\nclass PlayerPeripheral: NSObject, CBPeripheralManagerDelegate {\n   var peripheralManager: CBPeripheralManager?\n   var tokenData: Data?\n\n   func startBroadcast() {\n       tokenData = generateEphemeralToken()\n       peripheralManager = CBPeripheralManager(delegate: self, queue: nil)\n       let advertisementData = [CBAdvertisementDataLocalNameKey: "TagGame", CBAdvertisementDataServiceDataKey: ["token": tokenData!]]\n       peripheralManager?.startAdvertising(advertisementData)\n   }\n\n   func generateEphemeralToken() -> Data {\n       // 8-byte random ephemeral token, rotates every 10 sec\n       var bytes = [UInt8](repeating: 0, count: 8)\n       _ = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)\n       return Data(bytes)\n   }\n}\n` |
