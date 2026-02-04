@@ -1,6 +1,6 @@
 BLE Tag Game – Universal VR/AR Adapter Canvas 
 
-**1️⃣ Concept Overview (Layman’s Introduction)**
+**1️⃣ Concept Overview **
 Imagine a game of tag where you don’t have to touch anyone, and there’s no need for GPS or internet. 
 
 Players move around in the real world, and their phones or wearable devices detect each other automatically
